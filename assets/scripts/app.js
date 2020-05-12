@@ -1,24 +1,31 @@
 class Product {
   title = 'DEFAULT';
   imageUrl;
-  price;
   description;
+  price;
+
+  constructor(title, image, desc, price) {
+    this.title = title;
+    this.imageUrl = image;
+    this.description = desc;
+    this.price = price;
+  }
 }
 
 const productList = {
   products: [
-    {
-      title: 'A Pillow',
-      imageUrl: '/assets/images/IMG_1003.jpeg',
-      price: 19.99,
-      description: 'A soft pillow!'
-    },
-    {
-      title: 'A Pillow',
-      imageUrl: '/assets/images/IMG_1009.jpeg',
-      price: 89.99,
-      description: 'A carpet which you might like - or not.'
-    }
+    new Product(
+      'A Pillow',
+      '/assets/images/IMG_1003.jpeg',
+      'A soft pillor',
+      19.99
+    ),
+    new Product(
+      'A Carpet',
+      '/assets/images/IMG_1009.jpeg',
+      'A carpet which you might like - or not.',
+      89.99
+    ),
   ],
   render() {
     const renderHook = document.getElementById('app');
@@ -33,7 +40,7 @@ const productList = {
             <div class="product-item__content">
             <h2>${prod.title}</h2>
             <h3>${prod.price}</h3>
-            <p>${prod.description}</p>
+            <p>\$${prod.description}</p>
             <button>Add to Cart</button>
           </div>
         </div>
@@ -41,7 +48,7 @@ const productList = {
       prodList.append(prodEl);
     }
     renderHook.append(prodList);
-  }
+  },
 };
 
 productList.render();
