@@ -1,24 +1,31 @@
 class Product {
-  title = 'DEFAULT'
+  title = 'DEFAULT';
   imageUrl;
   description;
   price;
+
+  constructor(title, image, desc, price) {
+    this.title = title;
+    this.imageUrl = image;
+    this.description = desc;
+    this.price = price;
+  }
 }
 
 const productList = {
   products: [
-    {
-      title: 'A Pillow',
-      imageUrl: '/assets/images/IMG_1023.jpeg',
-      price: 19.99,
-      description: 'A soft pillow!'
-    },
-    {
-      title: 'A Carpet',
-      imageUrl: '/assets/images/IMG_1013.jpeg',
-      price: 89.99,
-      description: 'A carpet which you might like - or not.'
-    }
+    new Product(
+      'A Pillow',
+      '/assets/images/IMG_1023.jpeg',
+      'A soft pillow!',
+      19.99
+    ),
+    new Product(
+      'A Carpet',
+      '/assets/images/IMG_1013.jpeg',
+      'A carpet which you might like - or not.',
+      89.99
+    ),
   ],
   render() {
     const renderHook = document.getElementById('app');
@@ -37,11 +44,11 @@ const productList = {
             <button>Add to Cart</button>
           </div>
         </div>
-      `
-      prodList.append(prodEl)
+      `;
+      prodList.append(prodEl);
     }
     renderHook.append(prodList);
-  }
+  },
 };
 
 productList.render();
